@@ -1,0 +1,48 @@
+@(contacts: List [models.Contact], form: Form[models.Contact])
+
+<html>
+<body>
+<h2>Contacts</h2>
+<table cellpadding="15", border="0">
+<thead>
+<tr>
+<th>Name</th>
+<th>Email Address</th>
+<th>Address</th>
+<th>Phone Number</th>
+<th colspan="3">Actions</th>
+</tr>
+</thead>
+<tbody>
+@for(contact <- contacts) {
+<tr>
+<td>@contact.getName()</td>
+<td>@contact.getEmailAddress()</td>
+<td>@contact.getAddress()</td>
+<td>@contact.getPhoneNumber()</td>
+<td>
+<a href='@routes.Contacts.show(contact.getId())'>Show</a>
+</td>
+<td>
+<a href='@routes.Contacts.edit(contact.getId())'>Edit</a>
+</td>
+<td>
+@helper.form(action = routes.Contacts.delete(contact.getId())){
+<input type="submit" value="Delete" />
+}
+</td>
+</tr>
+}
+</tbody>
+</table>
+<br><br><br>
+<h2>New Contact</h2>
+@helper.form(action = routes.Contacts.create){
+@helper.inputText(form("name"), '_label -> "Name" )
+@helper.inputText(form("address"), '_label -> "Address")
+@helper.inputText(form("emailAddress"), '_label -> "Email Address")
+@helper.inputText(form("phoneNumber"), '_label -> "Phone Number")
+<input type="submit" value="New Contact" />
+}
+</body>
+</html>

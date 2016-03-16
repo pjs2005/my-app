@@ -1,0 +1,11 @@
+@(contact:  Contact)
+
+<p>Name:	@contact.getName()</p>
+<p>Address: @contact.getAddress()</p>
+<p>Email:	@contact.getEmailAddress()</p>
+<p>Phone:	@contact.getPhoneNumber()</p>
+
+<p>
+<a href='@routes.Contacts.edit(contact.getId())'>Edit</a>|
+<a href='@routes.Contacts.index()'>Back</a>
+</p>

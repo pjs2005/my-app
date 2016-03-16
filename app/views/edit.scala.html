@@ -1,0 +1,15 @@
+@(id: Long, contact: Form[Contact])
+
+<html>
+<body>
+<h2>Update Contact</h2>
+@helper.form(action = routes.Contacts.update(id)){
+@helper.inputText(contact("name"), '_label -> "Name" )
+@helper.inputText(contact("address"), '_label -> "Address")
+@helper.inputText(contact("emailAddress"), '_label -> "Email Address")
+@helper.inputText(contact("phoneNumber"), '_label -> "Phone Number")
+<input type="submit" value="Update Contact" />
+}
+<p><a href='@routes.Contacts.index()'>Back</a></p>
+</body>
+</html>
